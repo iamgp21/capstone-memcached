@@ -4,13 +4,13 @@ from pymemcache.client.base import Client
 def main():
     client = Client(('127.0.0.1', 11211))
     client.set('Environment', 'wsl2', expire=60) ## expire is in seconds
-    client.set('kv-store', 'memcached', expire=60) ## expire is in seconds
-    result = client.get_many(['Environment', 'Kv-store'])
+    client.set('database', 'memcached', expire=60) ## expire is in seconds
+    result = client.get_many(['Environment', 'database'])
     #print(type(result))
     #print(result)
     for key, value in result.items():
         if key is None or value is None:
-            print("Key or value is None, skipping...")
+            raise ValueError("Key or value is None, skipping...")
             continue
         else:
             print(f"Key: {key}", end="\n")
