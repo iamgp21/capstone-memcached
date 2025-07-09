@@ -10,7 +10,6 @@ def main():
     #print(result)
     for key, value in result.items():
         if key is None or value is None:
-            raise ValueError("Key or value is None, skipping...")
             continue
         else:
             print(f"Key: {key}", end="\n")
